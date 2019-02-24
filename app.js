@@ -26,5 +26,16 @@ app.use('/books/new', newBookRoute);
 app.use('/books/:id', updateBookRoute);
 app.use('/books/:id/delete', deleteBookRoute);
 
+// Handle 404 errors
+app.use((req, res, next) => {
+    res.status(404).render('page-not-found');
+});
+
+// Handle 500 errors
+app.use((err, req, res, next) => {
+    console.error(err.stack);
+    res.status(500).render('error');
+});
+
 // Create server
 app.listen(port, () => console.log(`App is listening to port ${port}`));
