@@ -1,4 +1,5 @@
 const express = require('express');
+const bodyParser = require('body-parser');
 
 // Import routes
 const indexRoute = require('./routes');
@@ -12,6 +13,10 @@ const port = process.env.PORT || 3000;
 
 // Create Express app
 const app = express();
+
+// Add body parser
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
 
 // Set view engine to Pug
 app.set('view engine', 'pug');

@@ -1,4 +1,5 @@
 const express = require('express');
+const Book = require('../models').Book;
 
 // Create new router
 const router = express.Router();
@@ -10,7 +11,23 @@ router.get('/', (req, res) => {
 
 // POST add a new book to the database
 router.post('/', (req, res) => {
-
+    Book.create(req.body)
+        .then((book) => {
+            res.redirect(`/books/${book.id}`);
+        })
+        .catch((err) => {
+            if (err.name === "SequelizeValidationError") {
+                res.render('new-book', {
+                    book: Book.build(req.body),
+                    errors: err.errors,
+                });
+            } else {
+                throw err;
+            }
+        })
+        .catch((err) => {
+            res.sendStatus(500);
+        });
 });
 
 // Export router

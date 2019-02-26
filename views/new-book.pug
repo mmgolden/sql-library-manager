@@ -5,7 +5,10 @@ block head
 
 block content
   h1 New Book
-  form
+
+  include errors.pug
+
+  form(action="/books/new", method="post")
     p
       label(for='title') Title
       input#title(name='title' type='text')
