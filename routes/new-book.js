@@ -16,7 +16,7 @@ router.post('/', (req, res) => {
             res.redirect(`/books/${book.id}`);
         })
         .catch((err) => {
-            if (err.name === "SequelizeValidationError") {
+            if (err.name === 'SequelizeValidationError') {
                 res.render('new-book', {
                     book: Book.build(req.body),
                     errors: err.errors,

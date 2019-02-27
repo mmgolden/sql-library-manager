@@ -6,7 +6,10 @@ block head
 
 block content
   h1 Update Book
-  form
+
+  include errors.pug
+
+  form(action=`/books/${id}`, method="post")
     p
       label(for='title') Title
       input#title(name='title' type='text' value=`${title}`)
