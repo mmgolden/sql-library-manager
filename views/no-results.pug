@@ -1,0 +1,13 @@
+extends layout.pug
+
+block head
+  title Books
+
+block content
+  h1 Books
+  form(action='/books' method='post')
+    input#search-input.search-input(type='search' name='search' placeholder='Search...')
+    input#search-submit.search-submit(type='submit' value='Search')
+  p
+    a.button(href='/books/new') Create New Book
+  p Sorry, no books were found.

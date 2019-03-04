@@ -117,3 +117,20 @@ input[type=text] {
   transition: .4s ease-out;
   text-align: center;
 }
+
+.pagination-container ul {
+  list-style: none;
+  padding: 0;
+}
+
+.pagination-container li {
+  display: inline-block;
+}
+
+.pagination-container li a {
+  padding: 10px;
+}
+
+#search-submit {
+  margin-left: 10px;
+}

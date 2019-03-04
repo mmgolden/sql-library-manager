@@ -5,6 +5,9 @@ block head
 
 block content
   h1 Books
+  form(action='/books' method='post')
+    input#search-input.search-input(type='search' name='search' placeholder='Search...')
+    input#search-submit.search-submit(type='submit' value='Search')
   p
     a.button(href='/books/new') Create New Book
   table
@@ -23,3 +26,8 @@ block content
           td= author
           td= genre
           td= year
+  div.pagination-container
+    ul
+      - for (var i = 1; i <= numOfPages; i++)
+        li
+          a(href=`/books?page=${i}`)= i
