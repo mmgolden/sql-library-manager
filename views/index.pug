@@ -38,4 +38,4 @@ block content
         ul
           - for (var i = 1; i <= numOfPages; i++)
             li
-              a(href=`/books?page=${i}`)= i
+              a(class=(parseInt(currentPage) === i) ? 'active' : '', href=`/books?page=${i}`)= i

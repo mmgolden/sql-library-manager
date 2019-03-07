@@ -21,7 +21,10 @@ const limit = 10;
 // GET the full list of books
 router.get('/', (req, res) => {
 
-    const currentPage = req.query.page;
+    let currentPage = req.query.page;
+    if (currentPage === undefined) {
+        currentPage = '1';
+    }
     const offset = calculateOffset(currentPage);
 
     // Get all of the books
@@ -45,7 +48,10 @@ router.get('/', (req, res) => {
 // POST search the books
 router.post('/', (req, res) => {
 
-    const currentPage = req.query.page;
+    let currentPage = req.query.page;
+    if (currentPage === undefined) {
+        currentPage = '1';
+    }
     const offset = calculateOffset(currentPage);
     const search = req.body.search;
 
