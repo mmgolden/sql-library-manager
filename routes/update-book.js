@@ -10,7 +10,11 @@ router.get('/', (req, res) => {
             where: {id: req.params.id}
         })
         .then((book) => {
-            book ? res.render('update-book', { book }) : res.sendStatus(404);
+            if (book) {
+                res.render('update-book', { book });
+            } else {
+                res.render('page-not-found');
+            }
         })
         .catch((err) => {
             res.sendStatus(500);
