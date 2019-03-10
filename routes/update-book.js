@@ -38,8 +38,10 @@ router.post('/', (req, res) => {
         })
         .catch((err) => {
             if (err.name === 'SequelizeValidationError') {
+                const book = Book.build(req.body);
+                book.id = req.params.id;
                 res.render('update-book', {
-                    book: Book.build(req.body),
+                    book,
                     errors: err.errors,
                 });
             } else {
